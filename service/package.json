@@ -1,0 +1,20 @@
+{
+  "name": "iot-1click",
+  "version": "1.0.0",
+  "description": "IoT 1-Click microservice of diedrich-button system",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "iot",
+    "1-click",
+    "iot enterprise button",
+    "diedrich-button",
+    "quick contact button",
+    "salesforce",
+    "crm"
+  ],
+  "author": "diedrich",
+  "license": "ISC",
+  "dependencies": {}
+}

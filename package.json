@@ -1,0 +1,22 @@
+{
+  "name": "diedrich-main",
+  "version": "1.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikiboy/diedrich-button.git"
+  },
+  "description": "Diedrich Quick Contact Button system",
+  "scripts": {
+    "create": "cd seed && node create-data.js"
+  },
+  "author": "diedrich",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "jest": "^22.4.3",
+    "jsonfile": "^4.0.0",
+    "dotenv": "^5.0.1"
+  }
+}

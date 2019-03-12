@@ -1,0 +1,87 @@
+service: diedrich-button
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: us-west-2
+  stage: dev
+  memorySize: ${self:custom.memSize.${self:custom.stage}}
+  profile: diedrich
+  environment:
+    STAGE: ${self:custom.stage}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - ses:*
+      Resource: "*"
+
+package:
+  exclude:
+    - package-lock.json
+    - package.json
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  memSize:
+    dev: 128
+    beta: 128
+    prod: 512
+
+functions:
+  fetchJob:
+    handler: register.handler
+    description: "Register diedrich button in IoT 1-Click (Place into Diedrich project)"
+    events:
+      - http:
+          path: register
+          method: post
+          cors: true
+          # private: true
+  action:
+    handler: action.handler
+    description: "Lambda action to handle click events emited from Diedrich buttons"
+    timeout: 60
+
+resources:
+  Resources:
+    IoT1ClickRole:
+      Type: "AWS::IAM::Role"
+      Description: "Allow IoT 1-Click to access to CloudWatch, Lambda on your behalf"
+      DependsOn: ActionLambdaFunction
+      Properties:
+        RoleName: IoT1ClickRole-${self:custom.stage}
+        AssumeRolePolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: "Allow"
+              Principal:
+                Service:
+                  - "iot1click.amazonaws.com"
+              Action:
+                - "sts:AssumeRole"
+        Policies:
+          - PolicyName: "Lambda-IoTRole-Policy"
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: "Allow"
+                  Action:
+                    - lambda:*
+                  Resource: "*"
+    # DiedrichProject:
+    #   Type: "AWS::IoT1Click::Project"
+    #   DependsOn: IoT1ClickRole
+    #   Properties:
+    #     ProjectName: Diedrich-${self:custom.stage}
+    #     Description: "Project for Diedrich Quick Contact Buttons"
+    #     PlacementTemplate:
+    #       DefaultAttributes:
+    #         DSN: G030PM04108222NB
+    #         email: mr.andrey.g.f@gmail.com
+    #         phone: +380947112354
+    #       DeviceTemplates:
+    #         DiedrichButton:
+    #           DeviceType: button
+    #           CallbackOverrides:
+    #             onClickCallback:
+    #               Fn::GetAtt: [ActionLambdaFunction, Arn]
