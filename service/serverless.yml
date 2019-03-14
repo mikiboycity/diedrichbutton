@@ -9,6 +9,8 @@ provider:
   profile: diedrich
   environment:
     STAGE: ${self:custom.stage}
+    PROJECT_NAME: Diedrich
+    DEVICE_TEMPLATE_NAME: DiedrichButton
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -28,9 +30,9 @@ custom:
     prod: 512
 
 functions:
-  fetchJob:
+  register:
     handler: register.handler
-    description: "Register diedrich button in IoT 1-Click (Place into Diedrich project)"
+    description: "Register diedrich button in IoT 1-Click (Create a placement into Diedrich project and associate button to it)"
     events:
       - http:
           path: register
