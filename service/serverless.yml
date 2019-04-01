@@ -11,6 +11,8 @@ provider:
     STAGE: ${self:custom.stage}
     PROJECT_NAME: Diedrich
     DEVICE_TEMPLATE_NAME: DiedrichButton
+  apiKeys:
+    - APIKey-${self:custom.stage}
   iamRoleStatements:
     - Effect: "Allow"
       Action:
