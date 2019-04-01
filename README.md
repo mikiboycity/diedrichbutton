@@ -15,7 +15,7 @@ Note:
 AWS IoT Enterprise Button is only available us-west-2 region (Orgeon)
 AWS IoT 1-Click does not support AWS IoT buttons whose device serial numbers (DSN) begin with G030JF, G030MD, and G030PT.
 
-## 2. Register button
+## 2. Register button API Endpoint
 
   - **Gateway Info**
 
@@ -25,10 +25,20 @@ AWS IoT 1-Click does not support AWS IoT buttons whose device serial numbers (DS
 
 <br/>
 
-  - **Specification For Endpoints**
+  - **Specification For Endpoint**
   
 | Endpoint | Method | Path      | Auth Mode         | Description                      |
 | -------- | ------ | --------- | ----------------- | -------------------------------- |
 | register | POST   | /register | Private (API Key) | register a button in IoT 1-Click |
+
+<br/>
+
+- **Parameter requirements**
+| Parameters | Description               |
+| ---------- | ------------------------- |
+| dsn        | DSN of button to register |
+| username   | Salesforce username       |
+| email      | owner email               |
+| phone      | owner phone number        |
 
 <br/>
