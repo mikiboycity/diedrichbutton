@@ -34,6 +34,7 @@ AWS IoT 1-Click does not support AWS IoT buttons whose device serial numbers (DS
 <br/>
 
 - **Parameter requirements**
+
 | Parameters | Description               |
 | ---------- | ------------------------- |
 | dsn        | DSN of button to register |
