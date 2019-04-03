@@ -21,7 +21,7 @@ AWS IoT 1-Click does not support AWS IoT buttons whose device serial numbers (DS
 
 | Stage | Service Endpoint                                           | API Key                                  |
 | ----- | ---------------------------------------------------------- | ---------------------------------------- |
-| dev   | https://q3o7m129y4.execute-api.us-west-2.amazonaws.com/dev | VA1u7eCAKdaFiYd1TpQkI3vdzkqRFeMyaLtzXd1I |
+| dev   | https://nxfhofubdg.execute-api.us-west-2.amazonaws.com/dev | 2Y8jjxENkL7476kQdVuI87W3LaZP4DH59juiHkFc |
 
 <br/>
 
