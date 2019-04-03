@@ -18,6 +18,10 @@ provider:
       Action:
         - ses:*
       Resource: "*"
+    - Effect: "Allow"
+      Action:
+        - iot1click:*
+      Resource: "*"
 
 package:
   exclude:

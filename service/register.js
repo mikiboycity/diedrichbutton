@@ -6,6 +6,12 @@ const iot1clickProjects = new IoT1ClickProjects({
   region: 'us-west-2'
 });
 
+const IoT1ClickDevicesService = require('aws-sdk/clients/iot1clickdevicesservice');
+const iot1clickDevicesService = new IoT1ClickDevicesService({
+  apiVersion: '2018-05-14',
+  region: 'us-west-2'
+});
+
 const uuid = require('uuid/v4');
 
 module.exports.handler = async event => {
@@ -26,6 +32,8 @@ module.exports.handler = async event => {
   const username = body.username;
   const email = body.email;
   const phone = body.phone;
+
+  console.log(`dsn: ${dsn}, username: ${username}, email: ${email}, phone: ${phone}`);
 
   if (typeof dsn !== 'string' || typeof username !== 'string' || typeof email !== 'string' || typeof phone !== 'string') {
     console.error('Specify DSN, username, email and phone parameters');
@@ -73,14 +81,25 @@ module.exports.handler = async event => {
 
   try {
     await iot1clickProjects.associateDeviceWithPlacement(params).promise();
+    console.log('Successfully, created a placement and placed the button in it');
+
+    // 4. Enable device
+    params = {
+      DeviceId: dsn,
+      Enabled: true
+    };
+    await iot1clickDevicesService.updateDeviceState(params).promise();
+    console.log('Successfully, enabled a device');
   } catch (error) {
-    console.error('Association error:', JSON.stringify(error));
+    console.error('error:', JSON.stringify(error));
 
     return {
       statusCode: 500,
       body: JSON.stringify(error)
     };
   }
+
+  console.log('Successfully, registered a button in AWS IoT 1-Click');
 
   return {
     statusCode: 200,

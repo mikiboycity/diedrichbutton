@@ -35,6 +35,8 @@ AWS IoT 1-Click does not support AWS IoT buttons whose device serial numbers (DS
 
 - **Parameter requirements**
 
+These parameters should be sent as key of JSON object
+
 | Parameters | Description               |
 | ---------- | ------------------------- |
 | dsn        | DSN of button to register |
@@ -43,3 +45,11 @@ AWS IoT 1-Click does not support AWS IoT buttons whose device serial numbers (DS
 | phone      | owner phone number        |
 
 <br/>
+
+curl command for sample request to Register device endpoint
+```
+$curl -X POST -H "x-api-key: 2Y8jjxENkL7476kQdVuI87W3LaZP4DH59juiHkFc" -d '{"username":"stevenp@diedrichroasters.com","email":"stevenp@diedrichroasters.com","phone":"+12089200122","dsn":"G030PM046226FX9A"}' https://nxfhofubdg.execute-api.us-west-2.amazonaws.com/dev/register
+```
+
+content type is `application/json`
+Even if you don't specify content type of the request, it should work well.
