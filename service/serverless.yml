@@ -8,10 +8,9 @@ provider:
   memorySize: ${self:custom.memSize.${self:custom.stage}}
   profile: diedrich
   environment:
-    SALESFORCE_CONSUMER_KEY: 3MVG92mNMNiWvongbgrUuIP.VC4NhWvjeyxFi2kdeI0Aqum_mBnlxRuM4opL7g.dQgAflnAtwTw48osXQ1YXB
-    SALESFORCE_CONSUMER_SECRET: 0642A9D9BADC24FDDD33548965C5CAF61BE19D68F473E0295BA65170C80E1A41
-    SALESFORCE_USERNAME: igor@puplab.digital
-    SALESFORCE_PASSWORD: mRby8C9pAiDtbDC
+    SF_CONSUMER_KEY: 3MVG92mNMNiWvongbgrUuIP.VC4NhWvjeyxFi2kdeI0Aqum_mBnlxRuM4opL7g.dQgAflnAtwTw48osXQ1YXB
+    SF_USERNAME: igor@puplab.digital
+    SF_INSTANCE_URL: https://ap6.salesforce.com
     STAGE: ${self:custom.stage}
     PROJECT_NAME: Diedrich
     DEVICE_TEMPLATE_NAME: DiedrichButton

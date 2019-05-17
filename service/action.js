@@ -13,7 +13,7 @@ var privateKey = require('fs').readFileSync('../key/salesforce.key', 'utf8');
 // function reBuildPrivateKey() {
 //   var beginPk = '-----BEGIN PRIVATE KEY-----\n';
 //   var endPk = '\n-----END PRIVATE KEY-----\n';
-//   return (
+//   resulturn (
 //     beginPk +
 //     process.env.privateKey
 //       .split(' ')
@@ -26,33 +26,55 @@ var privateKey = require('fs').readFileSync('../key/salesforce.key', 'utf8');
 module.exports.handler = (event, context, callback) => {
   console.log('event', JSON.stringify(event));
 
+  // 1. Extract necessary info from event
   var email = event.placementInfo.attributes.email;
+  var username = event.placementInfo.attributes.username;
   var dsn = event.placementInfo.attributes.dsn;
 
   console.log(`Event owner info => email: ${email}, DSN: ${dsn}`);
 
-  var CLIENT_ID = '3MVG92mNMNiWvongbgrUuIP.VC4NhWvjeyxFi2kdeI0Aqum_mBnlxRuM4opL7g.dQgAflnAtwTw48osXQ1YXB';
-  var USERNAME = 'igor@puplab.digital';
-  var LOGIN_URL = 'https://ap6.salesforce.com';
+  // 2. Authenticate with Salesforce
+  var CONSUMER_KEY = process.env.SF_CONSUMER_KEY;
+  var USERNAME = process.env.SF_USERNAME;
+  var INSTANCE_URL = process.env.SF_INSTANCE_URL;
   var sandbox = process.env.isSandbox == 'true'; //Set to true, if publishing PE to a sandbox org
 
-  //Get AccessToken using JWT OAuth2 flow
-  jwtflow.getToken(CLIENT_ID, privateKey, USERNAME, sandbox, function(err, accessToken) {
+  jwtflow.getToken(CONSUMER_KEY, privateKey, USERNAME, sandbox, function(err, accessToken) {
     if (err) {
       console.err('Error for getting OAuth token:', err);
       callback(err, null); // Error in JWT Flow
     }
 
-    //With the OAuth access token, connect to Salesforce
+    // 3. Initialize a connection to Salesforce instance
     if (accessToken) {
       var sfConnection = new jsforce.Connection();
       sfConnection.initialize({
-        instanceUrl: LOGIN_URL,
+        instanceUrl: INSTANCE_URL,
         accessToken: accessToken
       });
+
       if (sfConnection) {
-        // Create a case in Salesforce
+        // 4. Create a case in Salesforce
         console.log('The Salesforce connection has been built successfully');
+
+        const params = {
+          AccountId: username,
+          Status: 'New',
+          Origin: 'Web',
+          Subject: 'This is Case Example',
+          Description: 'This case has been issued from Diedrich button',
+          SuppliedEmail: email
+        };
+        sfConnection.sobject('Case').create(params, function(err, result) {
+          if (err || !result.success) {
+            console.error(err, result);
+            callback(err, null);
+            return;
+          }
+
+          console.log('Created the case with id : ' + result.id);
+          callback(null, result.id);
+        });
       }
     }
   });
