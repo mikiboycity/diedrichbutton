@@ -1,0 +1,32 @@
+{
+  "deviceInfo": {
+    "deviceId": "G030PM046226FX9A",
+    "type": "button",
+    "remainingLife": 99.9945,
+    "attributes": {
+      "projectRegion": "us-west-2",
+      "projectName": "Diedrich",
+      "placementName": "ed1218d0-5abe-495c-8fb5-51a5ed20f8c8",
+      "deviceTemplateName": "DiedrichButton"
+    }
+  },
+  "deviceEvent": {
+    "buttonClicked": {
+      "clickType": "SINGLE",
+      "reportedTime": "2019-04-04T22:31:38.714Z"
+    }
+  },
+  "placementInfo": {
+    "projectName": "Diedrich",
+    "placementName": "ed1218d0-5abe-495c-8fb5-51a5ed20f8c8",
+    "attributes": {
+      "phone": "+12089200122",
+      "dsn": "G030PM046226FX9A",
+      "email": "stevenp@diedrichroasters.com",
+      "username": "stevenp@diedrichroasters.com"
+    },
+    "devices": {
+      "DiedrichButton": "G030PM046226FX9A"
+    }
+  }
+}

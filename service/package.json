@@ -16,5 +16,8 @@
   ],
   "author": "diedrich",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "jsforce": "^1.9.1",
+    "new-salesforce-jwt": "^0.1.4"
+  }
 }
