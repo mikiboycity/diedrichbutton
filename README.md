@@ -37,12 +37,15 @@ AWS IoT 1-Click does not support AWS IoT buttons whose device serial numbers (DS
 
 These parameters should be sent as key of JSON object
 
-| Parameters | Description                       |
-| ---------- | --------------------------------- |
-| dsn        | DSN of button to register         |
-| username   | Salesforce username or Account ID |
-| email      | email of the button owner         |
-| phone      | phone number of the button owner  |
+| Parameters     | Description                               |
+| -------------- | ----------------------------------------- |
+| dsn            | DSN of button to register                 |
+| username       | Salesforce username or Account ID         |
+| email          | email of the button owner                 |
+| phone          | phone number of the button owner          |
+| opportunity_id | opportunity id of the owner in salesforce |
+| contact_id     | contact id of the owner in salesforce     |
+| bsn            | BSN of the owner in salesforce            |
 
 <br/>
 
