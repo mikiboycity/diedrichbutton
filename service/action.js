@@ -30,8 +30,11 @@ module.exports.handler = (event, context, callback) => {
   var email = event.placementInfo.attributes.email;
   var username = event.placementInfo.attributes.username;
   var dsn = event.placementInfo.attributes.dsn;
+  var opportunityId = event.placementInfo.attributes.opportunity_id;
+  var contactId = event.placementInfo.attributes.contact_id;
+  var bsn = event.placementInfo.attributes.bsn;
 
-  console.log(`Event owner info => email: ${email}, DSN: ${dsn}`);
+  console.log(`Event owner info => email: ${email}, DSN: ${dsn}, username: ${username}, opportunity_id: ${opportunityId}, contact_id: ${contactId}, bsn: ${bsn}`);
 
   // 2. Authenticate with Salesforce
   var CONSUMER_KEY = process.env.SF_CONSUMER_KEY;
@@ -60,10 +63,13 @@ module.exports.handler = (event, context, callback) => {
         const params = {
           AccountId: username,
           Status: 'New',
-          Origin: 'Web',
-          Subject: 'This is Case Example',
-          Description: 'This case has been issued from Diedrich button',
-          SuppliedEmail: email
+          Origin: 'IoT button',
+          Subject: `New IoT button case for ${bsn} number ${dsn}`,
+          // Description: 'This case has been issued from Diedrich button',
+          SuppliedEmail: email,
+          Reason: 'New problem',
+          ContactId: contactId,
+          Opportunity__c: opportunityId
         };
         sfConnection.sobject('Case').create(params, function(err, result) {
           if (err || !result.success) {

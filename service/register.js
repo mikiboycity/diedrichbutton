@@ -32,14 +32,25 @@ module.exports.handler = async event => {
   const username = body.username;
   const email = body.email;
   const phone = body.phone;
+  const opportunity_id = body.opportunity_id;
+  const contact_id = body.contact_id;
+  const bsn = body.bsn;
 
-  console.log(`dsn: ${dsn}, username: ${username}, email: ${email}, phone: ${phone}`);
+  console.log(`dsn: ${dsn}, username: ${username}, email: ${email}, phone: ${phone}`, `opportunity_id: ${opportunity_id}`, `contact_id: ${contact_id}`, `bsn: ${bsn}`);
 
-  if (typeof dsn !== 'string' || typeof username !== 'string' || typeof email !== 'string' || typeof phone !== 'string') {
-    console.error('Specify DSN, username, email and phone parameters');
+  if (
+    typeof dsn !== 'string' ||
+    typeof username !== 'string' ||
+    typeof email !== 'string' ||
+    typeof phone !== 'string' ||
+    typeof opportunity_id !== 'string' ||
+    typeof contact_id !== 'string' ||
+    typeof bsn !== 'string'
+  ) {
+    console.error('Specify DSN, username, email, phone, opportunity_id, contact_id, and bsn parameters');
     return {
       statusCode: 400,
-      body: 'Specify DSN, username, email and phone parameters'
+      body: 'Specify DSN, username, email, phone, opportunity_id, contact_id, and bsn parameters'
     };
   }
 
@@ -54,7 +65,10 @@ module.exports.handler = async event => {
       dsn,
       username,
       email,
-      phone
+      phone,
+      opportunity_id,
+      contact_id,
+      bsn
     }
   };
 
