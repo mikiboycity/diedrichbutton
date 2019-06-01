@@ -56,3 +56,39 @@ $curl -X POST -H "x-api-key: 2Y8jjxENkL7476kQdVuI87W3LaZP4DH59juiHkFc" -d '{"use
 
 content type is `application/json`
 Even if you don't specify content type of the request, it should work well.
+
+## 2. Create Case in Salesforce
+
+Please use following structure when sneding API request to Salesforce
+
+| Field Id       | Data                                      |
+| -------------- | ----------------------------------------- |
+| AccountId      | registred account ID                      |
+| ContactId      | registred contact ID                      |
+| Opportunity__c | registred opportunity ID                  |
+| Status         | New
+| Origin         | IOT Button                                |
+| Subject        | New IOT Button Case for BSN numer G030PM046226FX9A        |
+| Reason         | New problem                               |
+
+So request example would look something like this 
+```
+sfConnection.sobject('Case').create(
+{
+   AccountId: ~Account ID aka username ~,
+   ContactId: ~Contact ID~,
+   Opportunity__c: ~Opportunity ID~,
+   Status: 'New',
+   Origin: 'IOT Button',
+   Subject: 'New IOT Button Case for BSN numer '+dsn,
+   Reason: 'New problem'
+},
+function (err, ret) {
+    if (err || !ret.success) {
+        return console.error(err, ret)
+    }
+    console.log('Created record id : ' + ret.id)
+});
+
+```
+
