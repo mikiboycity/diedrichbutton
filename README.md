@@ -68,7 +68,7 @@ Please use following structure when sneding API request to Salesforce
 | Opportunity__c | registred opportunity ID                  |
 | Status         | New
 | Origin         | IOT Button                                |
-| Subject        | New IOT Button Case for BSN numer G030PM046226FX9A        |
+| Subject        | New IOT Button Case for DSN numer G030PM046226FX9A        |
 | Reason         | New problem                               |
 
 So request example would look something like this 
@@ -80,7 +80,7 @@ sfConnection.sobject('Case').create(
    Opportunity__c: ~Opportunity ID~,
    Status: 'New',
    Origin: 'IOT Button',
-   Subject: 'New IOT Button Case for BSN numer '+dsn,
+   Subject: 'New IOT Button Case for DSN numer '+dsn,
    Reason: 'New problem'
 },
 function (err, ret) {
