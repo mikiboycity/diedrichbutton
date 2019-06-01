@@ -8,9 +8,9 @@ provider:
   memorySize: ${self:custom.memSize.${self:custom.stage}}
   profile: diedrich
   environment:
-    SF_CONSUMER_KEY: 3MVG92mNMNiWvongbgrUuIP.VC4NhWvjeyxFi2kdeI0Aqum_mBnlxRuM4opL7g.dQgAflnAtwTw48osXQ1YXB
-    SF_USERNAME: igor@puplab.digital
-    SF_INSTANCE_URL: https://ap6.salesforce.com
+    SF_CONSUMER_KEY: 3MVG9QBLg8QGkFer3aI9gMbeTsSrXCSuw84nUJ1iPyTHGmRv5Lpgd6vhtnTcuWUGfD4OmNS7uu5iajnVozauI
+    SF_USERNAME: zackl@diedrichroasters.com.diedricnew
+    SF_INSTANCE_URL: https://diedrichroasters--diedricnew.cs63.my.salesforce.com
     STAGE: ${self:custom.stage}
     PROJECT_NAME: Diedrich
     DEVICE_TEMPLATE_NAME: DiedrichButton

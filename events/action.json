@@ -20,10 +20,12 @@
     "projectName": "Diedrich",
     "placementName": "ed1218d0-5abe-495c-8fb5-51a5ed20f8c8",
     "attributes": {
-      "phone": "+12089200122",
+      "phone": "111222333",
       "dsn": "G030PM046226FX9A",
-      "email": "stevenp@diedrichroasters.com",
-      "username": "0016C00000D9XXeQAN"
+      "email": "111222333",
+      "username": "0016C00000D9XXeQAN",
+      "opportunity_id": "0066C000005eXQ4QAM",
+      "contact_id": "0036C00000AOV5cQAH"
     },
     "devices": {
       "DiedrichButton": "G030PM046226FX9A"

@@ -39,11 +39,11 @@ module.exports.handler = (event, context, callback) => {
   var CONSUMER_KEY = process.env.SF_CONSUMER_KEY;
   var USERNAME = process.env.SF_USERNAME;
   var INSTANCE_URL = process.env.SF_INSTANCE_URL;
-  var sandbox = process.env.isSandbox == 'true'; //Set to true, if publishing PE to a sandbox org
+  var sandbox = true; //Set to true, if publishing PE to a sandbox org
 
   jwtflow.getToken(CONSUMER_KEY, privateKey, USERNAME, sandbox, function(err, accessToken) {
     if (err) {
-      console.err('Error for getting OAuth token:', err);
+      console.error('Error for getting OAuth token:', err);
       callback(err, null); // Error in JWT Flow
     }
 
