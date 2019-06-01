@@ -45,7 +45,6 @@ These parameters should be sent as key of JSON object
 | phone          | phone number of the button owner          |
 | opportunity_id | opportunity id of the owner in salesforce |
 | contact_id     | contact id of the owner in salesforce     |
-| bsn            | BSN of the owner in salesforce            |
 
 <br/>
 
@@ -61,15 +60,15 @@ Even if you don't specify content type of the request, it should work well.
 
 Please use following structure when sneding API request to Salesforce
 
-| Field Id       | Data                                      |
-| -------------- | ----------------------------------------- |
-| AccountId      | registred account ID                      |
-| ContactId      | registred contact ID                      |
-| Opportunity__c | registred opportunity ID                  |
-| Status         | New
-| Origin         | IOT Button                                |
-| Subject        | New IOT Button Case for DSN numer G030PM046226FX9A        |
-| Reason         | New problem                               |
+| Field Id       | Data                                               |
+| -------------- | -------------------------------------------------- |
+| AccountId      | registred account ID                               |
+| ContactId      | registred contact ID                               |
+| Opportunity__c | registred opportunity ID                           |
+| Status         | New                                                |
+| Origin         | IOT Button                                         |
+| Subject        | New IOT Button Case for DSN numer G030PM046226FX9A |
+| Reason         | New problem                                        |
 
 So request example would look something like this 
 ```

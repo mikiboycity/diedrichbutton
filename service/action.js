@@ -32,9 +32,8 @@ module.exports.handler = (event, context, callback) => {
   var dsn = event.placementInfo.attributes.dsn;
   var opportunityId = event.placementInfo.attributes.opportunity_id;
   var contactId = event.placementInfo.attributes.contact_id;
-  var bsn = event.placementInfo.attributes.bsn;
 
-  console.log(`Event owner info => email: ${email}, DSN: ${dsn}, username: ${username}, opportunity_id: ${opportunityId}, contact_id: ${contactId}, bsn: ${bsn}`);
+  console.log(`Event owner info => email: ${email}, DSN: ${dsn}, username: ${username}, opportunity_id: ${opportunityId}, contact_id: ${contactId}`);
 
   // 2. Authenticate with Salesforce
   var CONSUMER_KEY = process.env.SF_CONSUMER_KEY;
@@ -64,9 +63,8 @@ module.exports.handler = (event, context, callback) => {
           AccountId: username,
           Status: 'New',
           Origin: 'IoT button',
-          Subject: `New IoT button case for ${bsn} number ${dsn}`,
+          Subject: `New IoT button case for DSN number ${dsn}`,
           // Description: 'This case has been issued from Diedrich button',
-          SuppliedEmail: email,
           Reason: 'New problem',
           ContactId: contactId,
           Opportunity__c: opportunityId
