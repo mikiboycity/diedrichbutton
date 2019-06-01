@@ -41,11 +41,12 @@ These parameters should be sent as key of JSON object
 | -------------- | ----------------------------------------- |
 | dsn            | DSN of button to register                 |
 | username       | Salesforce username or Account ID         |
-| email          | email of the button owner                 |
-| phone          | phone number of the button owner          |
 | opportunity_id | opportunity id of the owner in salesforce |
 | contact_id     | contact id of the owner in salesforce     |
-| bsn            | BSN of the owner in salesforce            |
+| Status         | Case Status                               |
+| Origin         | Case Origin                               |
+| Subject        | Case Subject                              |
+| Reason         | Case Reason                               |
 
 <br/>
 
