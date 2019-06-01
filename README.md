@@ -43,7 +43,8 @@ These parameters should be sent as key of JSON object
 | username       | Salesforce username or Account ID         |
 | opportunity_id | opportunity id of the owner in salesforce |
 | contact_id     | contact id of the owner in salesforce     |
-
+| email          | contact's email                           |
+| phone          | contact's phone                           |
 
 <br/>
 
