@@ -64,6 +64,7 @@ module.exports.handler = async event => {
 
   try {
     await iot1clickProjects.createPlacement(params).promise();
+    console.log('Created an empty placement with device attributes');
   } catch (error) {
     console.error('Creating placement error:', JSON.stringify(error));
 
@@ -85,7 +86,7 @@ module.exports.handler = async event => {
 
   try {
     await iot1clickProjects.associateDeviceWithPlacement(params).promise();
-    console.log('Successfully, created a placement and placed the button in it');
+    console.log('Successfully, associated a device to the placement');
 
     // 4. Enable device
     params = {
