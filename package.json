@@ -15,7 +15,7 @@
   "dependencies": {},
   "devDependencies": {
     "faker": "^4.1.0",
-    "jest": "^22.4.3",
+    "jest": "^29.3.1",
     "jsonfile": "^4.0.0",
     "dotenv": "^5.0.1"
   }
